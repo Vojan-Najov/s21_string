@@ -41,6 +41,7 @@ START_TEST (not_found1)
 
 	ck_assert_ptr_eq(s21_memchr(buf, c, n), memchr(buf, c, n));
 }
+END_TEST
 
 START_TEST (not_found2)
 {
@@ -50,6 +51,7 @@ START_TEST (not_found2)
 
 	ck_assert_ptr_eq(s21_memchr(buf, c, n), memchr(buf, c, n));
 }
+END_TEST
 
 START_TEST (found_1)
 {
@@ -59,6 +61,7 @@ START_TEST (found_1)
 
 	ck_assert_ptr_eq(s21_memchr(buf, c, n), memchr(buf, c, n));
 }
+END_TEST
 
 START_TEST (found_2)
 {
@@ -68,6 +71,7 @@ START_TEST (found_2)
 
 	ck_assert_ptr_eq(s21_memchr(buf, c, n), memchr(buf, c, n));
 }
+END_TEST
 
 START_TEST (found_3)
 {
@@ -78,6 +82,7 @@ START_TEST (found_3)
 	ck_assert_ptr_eq(s21_memchr(buf, c, n), memchr(buf, c, n));
 	ck_assert_ptr_nonnull(s21_memchr(buf, c, n));
 }
+END_TEST
 
 START_TEST (found_unsigned_char_1)
 {
@@ -87,6 +92,7 @@ START_TEST (found_unsigned_char_1)
 
 	ck_assert_ptr_eq(s21_memchr(buf, c, n), memchr(buf, c, n));
 }
+END_TEST
 
 START_TEST (found_unsigned_char_2)
 {
@@ -99,6 +105,7 @@ START_TEST (found_unsigned_char_2)
 	buf[2] = 0x2;
 	ck_assert_ptr_eq(s21_memchr(buf, c, n), memchr(buf, c, n));
 }
+END_TEST
 
 Suite	*suite_s21_memchr(void)
 {

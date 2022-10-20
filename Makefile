@@ -1,10 +1,11 @@
 NAME = s21_string.a
 
-SRC = src/s21_memchr.c src/s21_strlen.c
+SRC = src/s21_memchr.c src/s21_memcmp.c src/s21_memcpy.c
 
 OBJ = $(SRC:.c=.o)
 
-TEST_SRC = tests/test_s21_memchr.c tests/test.c
+TEST_SRC = tests/test.c tests/test_s21_memchr.c tests/test_s21_memcmp.c \
+			tests/test_s21_memcpy.c
 
 TEST_OBJ = $(TEST_SRC:.c=.o)
 
@@ -22,7 +23,7 @@ test: $(NAME) $(TEST_OBJ)
 all: $(NAME)
 
 clean:
-	rm -f src/*.o
+	rm -f $(OBJ) $(TEST_OBJ)
 
 fclean: clean
 	rm -f $(NAME)

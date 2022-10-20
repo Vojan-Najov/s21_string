@@ -10,5 +10,6 @@ void	*s21_memchr(const void *s, int c, size_t n)
 		--n;
 		++ptr;
 	}
+
 	return n ? (void *) ptr : NULL;
 }

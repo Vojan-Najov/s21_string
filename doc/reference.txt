@@ -3,7 +3,7 @@ STRING.H WITH ADDITIONS
 
 TYPES
 
-size_t -- used for a count of bytes. It is the result of the sizeof
+	size_t - used for a count of bytes. It is the result of the sizeof
 operator. According to the C language standard, it shall be an unsigned
 integer type capable of storing values  in  the  range  [0, SIZE_MAX].
 According to POSIX, the implementation shall support one or more
@@ -16,18 +16,41 @@ functions is z; resulting commonly in %zu or %zx for printing size_t values.
 
 MACRO
 
-NULL -- this macro is the value of a null pointer constant.
+	NULL - this macro is the value of a null pointer constant.
 
 
 STRING.H
 
-void *memchr(const void *s, int c, size_t n);
-
+	memchr - scan memory for a character
+SYNOPSIS
+	void *memchr(const void *s, int c, size_t n);
 DESCRIPTION
-The memchr() function scans the initial n bytes of the memory area pointed
-to by s for the first instance of c. Both c and the bytes of the memory
-area pointed to by s are interpreted as unsigned char.
+	The memchr() function scans the initial n bytes of the memory area
+pointed to by s for the first instance of c. Both c and the bytes of the
+memory area pointed to by s are interpreted as unsigned char.
 RETURN VALUE
-The memchr() function return a pointer to the matching byte or NULL if the
-character does not occur in the given memory area.
+	The memchr() function return a pointer to the matching byte or NULL if
+the character does not occur in the given memory area.
 
+	memcmp - compare memory areas
+SYNOPSIS
+	int memcmp(const void *s1, const void *s2, size_t n);
+DESCRIPTION
+	The memcmp() function compares the first n bytes (each interpreted as
+unsigned char) of the memory areas s1 and s2.
+RETURN VALUE
+	The  memcmp() function returns an integer less than, equal to, or
+greater than zero if the first n bytes of s1 is found, respectively, to be
+less than, to match, or be greater than the first n bytes of s2.
+For a nonzero return value, the sign is determined by the sign of the
+difference between the first pair of bytes (interpreted as unsigned char)
+that differ in s1 and s2. If n is zero, the return value is zero.
+
+	memcpy - copy memory area
+SYNOPSIS
+	void *memcpy(void *dest, const void *src, size_t n);
+DESCRIPTION
+	The memcpy() function copies n bytes from memory area src to memory
+area dest. The memory areas must not overlap.
+RETURN VALUE
+	The memcpy() function returns a pointer to dest.
