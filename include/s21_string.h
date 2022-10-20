@@ -19,7 +19,7 @@ void	*s21_memcpy(void *dest, const void *src, size_t n);
 
 void	*s21_memmove(void *dest, const void *src, size_t n);
 
-void	*s21_memset(void *str, int c, size_t n);
+void	*s21_memset(void *s, int c, size_t n);
 
 char	*s21_strcat(char *dest, const char *src);
 
