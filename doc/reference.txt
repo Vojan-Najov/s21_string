@@ -1,0 +1,33 @@
+STRING.H WITH ADDITIONS
+
+
+TYPES
+
+size_t -- used for a count of bytes. It is the result of the sizeof
+operator. According to the C language standard, it shall be an unsigned
+integer type capable of storing values  in  the  range  [0, SIZE_MAX].
+According to POSIX, the implementation shall support one or more
+programming environments where the width of size_t is no greater than the
+width of the type long.
+
+The length modifier for size_t for the printf and the scanf families of
+functions is z; resulting commonly in %zu or %zx for printing size_t values.
+
+
+MACRO
+
+NULL -- this macro is the value of a null pointer constant.
+
+
+STRING.H
+
+void *memchr(const void *s, int c, size_t n);
+
+DESCRIPTION
+The memchr() function scans the initial n bytes of the memory area pointed
+to by s for the first instance of c. Both c and the bytes of the memory
+area pointed to by s are interpreted as unsigned char.
+RETURN VALUE
+The memchr() function return a pointer to the matching byte or NULL if the
+character does not occur in the given memory area.
+
