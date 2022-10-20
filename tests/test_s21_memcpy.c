@@ -50,7 +50,7 @@ START_TEST (copy_2)
 		src[i] = k;
 	}
 	s21_memcpy(dest, src, n);
-	ck_assert(memcpy(dest, src, n));
+	ck_assert(memcmp(dest, src, n) == 0);
 }
 END_TEST
 

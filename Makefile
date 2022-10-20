@@ -1,11 +1,12 @@
 NAME = s21_string.a
 
-SRC = src/s21_memchr.c src/s21_memcmp.c src/s21_memcpy.c
+SRC = src/s21_memchr.c src/s21_memcmp.c src/s21_memcpy.c \
+		src/s21_memmove.c
 
 OBJ = $(SRC:.c=.o)
 
 TEST_SRC = tests/test.c tests/test_s21_memchr.c tests/test_s21_memcmp.c \
-			tests/test_s21_memcpy.c
+			tests/test_s21_memcpy.c tests/test_s21_memmove.c
 
 TEST_OBJ = $(TEST_SRC:.c=.o)
 

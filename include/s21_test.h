@@ -7,4 +7,6 @@ Suite	*suite_s21_memcmp(void);
 
 Suite	*suite_s21_memcpy(void);
 
+Suite	*suite_s21_memmove(void);
+
 #endif
