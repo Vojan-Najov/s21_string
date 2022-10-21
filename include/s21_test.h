@@ -15,4 +15,6 @@ Suite	*suite_s21_strcat(void);
 
 Suite	*suite_s21_strncat(void);
 
+Suite	*suite_s21_strcmp(void);
+
 #endif
