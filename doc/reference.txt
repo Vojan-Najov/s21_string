@@ -75,3 +75,16 @@ to by s with the constant byte c.
 RETURN VALUE
 	The memset() function returns a pointer to the memory area s.
 
+	strcat- concatenate two strings
+SYNOPSIS
+	char *strcat(char *restrict dest, const char *restrict src);
+DESCRIPTION
+	The strcat() function appends the src string to the dest string,
+overwriting the terminating null byte ('\0') at the end of dest, and then
+adds a terminating null byte. The strings may not overlap, and the dest
+string must have enough space for the result. If dest is not large enough,
+program behavior is unpredictable; buffer overruns are a favorite avenue
+for attacking secure programs.
+RETURN VALUE
+	The strcat() function return a pointer to the resulting string dest.
+

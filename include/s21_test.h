@@ -11,4 +11,6 @@ Suite	*suite_s21_memmove(void);
 
 Suite	*suite_s21_memset(void);
 
+Suite	*suite_s21_strcat(void);
+
 #endif
