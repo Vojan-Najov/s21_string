@@ -11,7 +11,9 @@ typedef long unsigned int size_t;
 #define NULL ((void*)0)
 #endif
 
-void	*s21_memchr(const void *s, int c, size_t n);
+void *s21_memchr(const void *s, int c, size_t n);
+void *s21_memrchr(const void *s, int c, size_t n); /* gnu_source */
+void *s21_rawmemchr(const void *s, int c); /* gnu_source */
 
 int		s21_memcmp(const void *s1, const void *s2, size_t n);
 
