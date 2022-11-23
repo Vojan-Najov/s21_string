@@ -4,8 +4,7 @@
 Suite *suite_s21_memchr(void);
 Suite *suite_s21_memrchr(void);
 Suite *suite_s21_rawmemchr(void);
-
-Suite	*suite_s21_memcmp(void);
+Suite *suite_s21_memcmp(void);
 
 Suite	*suite_s21_memcpy(void);
 

@@ -46,7 +46,7 @@ END_TEST
 START_TEST (not_found2)
 {
 	char	buf[] = "abvdefg";
-	size_t	n = sizeof(buf) / sizeof(char) - 3;
+	size_t	n = sizeof(buf) / sizeof(char) - 2;
 	int		c = 'g';
 
 	ck_assert_ptr_eq(s21_memchr(buf, c, n), memchr(buf, c, n));
