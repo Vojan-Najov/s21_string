@@ -43,7 +43,7 @@ START_TEST (copy_2)
 {
 	int		src[4096];
 	int		dest[1024];
-	size_t	n = 1024;
+	size_t	n = 1024 * sizeof(int);
 
 	for (int k = INT_MAX, i = 0; i < 4096; ++i, --k)
 	{
@@ -56,14 +56,18 @@ END_TEST
 
 Suite	*suite_s21_memcpy(void)
 {
-	Suite	*s = suite_create("suite_s21_memcpy");
-	TCase	*tc = tcase_create("tcase_s21_memcpy");
+	Suite	*s = NULL;
+	TCase	*tc = NULL;
 
-	tcase_add_test(tc, zero_size_1);
-	tcase_add_test(tc, zero_size_2);
-	tcase_add_test(tc, copy_1);
-	tcase_add_test(tc, copy_2);
-	suite_add_tcase(s, tc);
+	s = suite_create("suite_s21_memcpy");
+	tc = tcase_create("tcase_s21_memcpy");
+	if (s != NULL && tc != NULL) {
+		tcase_add_test(tc, zero_size_1);
+		tcase_add_test(tc, zero_size_2);
+		tcase_add_test(tc, copy_1);
+		tcase_add_test(tc, copy_2);
+		suite_add_tcase(s, tc);
+	}
 
-	return s;
+	return (s);
 }

@@ -15,8 +15,7 @@ void *s21_memchr(const void *s, int c, size_t n);
 void *s21_memrchr(const void *s, int c, size_t n); /* gnu_source */
 void *s21_rawmemchr(const void *s, int c); /* gnu_source */
 int s21_memcmp(const void *s1, const void *s2, size_t n);
-
-void	*s21_memcpy(void *dest, const void *src, size_t n);
+void *s21_memcpy(void *dest, const void *src, size_t n);
 
 void	*s21_memmove(void *dest, const void *src, size_t n);
 
