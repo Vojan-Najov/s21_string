@@ -47,7 +47,7 @@ size_t s21_strspn(const char *s, const char *accept);
 
 size_t s21_strcspn(const char *s, const char *reject);
 
-size_t	s21_strlen(const char *str);
+size_t s21_strlen(const char *str);
 
 char	*s21_strpbrk(const char *s, const char *accept);
 

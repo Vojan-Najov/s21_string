@@ -38,6 +38,7 @@ int	main(void)
 		suite_s21_strncpy(),
 		suite_s21_strspn(),
 		suite_s21_strcspn(),
+		suite_s21_strlen(),
 		NULL
 	};
 
