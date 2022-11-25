@@ -29,6 +29,8 @@ int	main(void)
         suite_s21_memset(),
 		suite_s21_strcat(),
 		suite_s21_strncat(),
+		suite_s21_strchr(),
+		suite_s21_strrchr(),
 		suite_s21_strcmp(),
 		suite_s21_strncmp(),
 		NULL

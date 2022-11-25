@@ -23,4 +23,8 @@ Suite *suite_s21_strcmp(void);
 
 Suite *suite_s21_strncmp(void);
 
+Suite *suite_s21_strchr(void);
+
+Suite *suite_s21_strrchr(void);
+
 #endif

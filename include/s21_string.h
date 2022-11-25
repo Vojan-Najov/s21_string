@@ -31,6 +31,10 @@ char *s21_strncat(char *dest, const char *src, size_t n);
 
 char *s21_strchr(const char *str, int c);
 
+char *s21_strrchr(const char *str, int c);
+
+char *s21_strchrnul(const char *str, int); /* gnu_source */
+
 int s21_strcmp(const char *str1, const char *str2);
 
 int s21_strncmp(const char *str1, const char *str2, size_t n);
@@ -44,8 +48,6 @@ size_t	s21_strcspn(const char str1, const char str2);
 size_t	s21_strlen(const char *str);
 
 char	*s21_strpbrk(const char *s, const char *accept);
-
-char	*s21_strrchr(const char *s, int c);
 
 size_t	s21_strspn(const char *s, const char *accept);
 
