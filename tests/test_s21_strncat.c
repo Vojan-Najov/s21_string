@@ -90,6 +90,7 @@ START_TEST (n_eq_src_length)
 	}
 	dest[255] = dest21[255] = '\0';
 
+	ck_assert(strlen(src21) == n);
 	ck_assert_ptr_eq(s21_strncat(dest21, src21, n), dest21);
 	strncat(dest, src, n);
 	ck_assert(strcmp(dest, dest21) == 0);
@@ -99,14 +100,18 @@ END_TEST
 
 Suite	*suite_s21_strncat(void)
 {
-	Suite	*s = suite_create("suite_s21_strncat");
-	TCase	*tc = tcase_create("tcase_s21_strncat");
+	Suite	*s = NULL;
+	TCase	*tc = NULL;
 
-	tcase_add_test(tc, zero_size);
-	tcase_add_test(tc, n_greater_src_length);
-	tcase_add_test(tc, n_less_src_length);
-	tcase_add_test(tc, n_eq_src_length);
-	suite_add_tcase(s, tc);
+	s = suite_create("suite_s21_strncat");
+	tc = tcase_create("tcase_s21_strncat");
+	if (s != NULL && tc != NULL) {
+		tcase_add_test(tc, zero_size);
+		tcase_add_test(tc, n_greater_src_length);
+		tcase_add_test(tc, n_less_src_length);
+		tcase_add_test(tc, n_eq_src_length);
+		suite_add_tcase(s, tc);
+	}
 
-	return s;
+	return (s);
 }
