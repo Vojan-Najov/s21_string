@@ -170,3 +170,19 @@ RETURN VALUE
 	The strcpy() and strncpy() functions return a pointer to the
 destination string dest.
 
+	strspn, strcspn - get length of a prefix substring
+SYNOPSIS
+	size_t strspn(const char *s, const char *accept);
+	size_t strcspn(const char *s, const char *reject);
+DESCRIPTION
+	The strspn() function calculates the length (in bytes) of the initial segment
+of s which consists entirely of bytes in accept.
+	The strcspn() function calculates the length of the initial segment
+of s which consists entirely of bytes not in reject.
+RETURN VALUE
+	The strspn() function returns the number of bytes in the initial segment of s
+which consist only of bytes from accept.
+	The strcspn() function returns the number of bytes in the initial segment of s
+which are not in the string reject.
+
+

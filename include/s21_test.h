@@ -33,4 +33,6 @@ Suite *suite_s21_strcpy(void);
 
 Suite *suite_s21_strncpy(void);
 
+Suite *suite_s21_strspn(void);
+
 #endif
