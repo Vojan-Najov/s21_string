@@ -132,7 +132,6 @@ return a pointer to the terminator.
 pointer to the null byte at the end of s (i.e., s+strlen(s)) if the character is not
 found.
 
-
 	strcmp, strncmp - compare two strings
 SYNOPSIS
 	int strcmp(const char *s1, const char *s2);
@@ -151,4 +150,23 @@ RETURN VALUE
 	The strcmp() and strncmp() functions return an integer less than, equal
 to, or greater than zero if s1 (or the first n bytes thereof) is found,
 respectively, to be less than, to match, or be greater than s2.
+
+
+	strcpy, strncpy - copy a string
+SYNOPSIS
+	char *strcpy(char *restrict dest, const char *restrict src);
+	char *strncpy(char *restrict dest, const char *restrict src, size_t n);
+DESCRIPTION
+	The strcpy() function copies the string pointed to by src, including the
+terminating null byte ('\0'), to the buffer pointed to by dest. The strings may not
+overlap, and the destination string dest must be large enough to receive the copy.
+Beware of buffer overruns!
+	The strncpy() function is similar, except that at most n bytes of src are copied.
+Warning: If there is no null byte among the first n bytes of src, the string placed
+in dest will not be null-terminated.
+If the length of src is less than n, strncpy() writes additional null bytes to dest
+to ensure that a total of n bytes are written.
+RETURN VALUE
+	The strcpy() and strncpy() functions return a pointer to the
+destination string dest.
 

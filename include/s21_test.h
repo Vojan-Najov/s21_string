@@ -29,4 +29,5 @@ Suite *suite_s21_strrchr(void);
 
 Suite *suite_s21_strchrnul(void);
 
+Suite *suite_s21_strcpy(void);
 #endif
