@@ -114,17 +114,21 @@ END_TEST
 
 Suite	*suite_s21_memmove(void)
 {
-	Suite *s = suite_create("suite_S21_memmove");
-	TCase *tc = tcase_create("tcase_s21_memmove");
+	Suite *s = NULL;
+	TCase *tc = NULL;
 
-	tcase_add_test(tc, zero_size_1);
-	tcase_add_test(tc, zero_size_2);
-	tcase_add_test(tc, zero_size_3);
-	tcase_add_test(tc, copy);
-	tcase_add_test(tc, copy_from_right_to_left);
-	tcase_add_test(tc, copy_from_left_to_right);
-	tcase_add_test(tc, copy_from_begin_to_begin);
-	suite_add_tcase(s, tc);
+	s = suite_create("suite_S21_memmove");
+	tc = tcase_create("tcase_s21_memmove");
+	if (s != NULL && tc != NULL) {
+		tcase_add_test(tc, zero_size_1);
+		tcase_add_test(tc, zero_size_2);
+		tcase_add_test(tc, zero_size_3);
+		tcase_add_test(tc, copy);
+		tcase_add_test(tc, copy_from_right_to_left);
+		tcase_add_test(tc, copy_from_left_to_right);
+		tcase_add_test(tc, copy_from_begin_to_begin);
+		suite_add_tcase(s, tc);
+	}
 
-	return s;
+	return (s);
 }
