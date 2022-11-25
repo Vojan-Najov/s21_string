@@ -61,14 +61,18 @@ END_TEST
 
 Suite	*suite_s21_strcat(void)
 {
-	Suite	*s = suite_create("suite_s21_strcat");
-	TCase	*tc = tcase_create("tcase_s21_strcat");
+	Suite	*s = NULL;
+	TCase	*tc = NULL;
 
-	tcase_add_test(tc, empty_src_1);
-	tcase_add_test(tc, empty_src_2);
-	tcase_add_test(tc, cat_1);
-	tcase_add_test(tc, cat_2);
-	suite_add_tcase(s, tc);
+	s = suite_create("suite_s21_strcat");
+	tc = tcase_create("tcase_s21_strcat");
+	if (s != NULL && tc != NULL) {
+		tcase_add_test(tc, empty_src_1);
+		tcase_add_test(tc, empty_src_2);
+		tcase_add_test(tc, cat_1);
+		tcase_add_test(tc, cat_2);
+		suite_add_tcase(s, tc);
+	}
 
-	return s;
+	return (s);
 }
