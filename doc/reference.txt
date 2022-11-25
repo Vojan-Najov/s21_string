@@ -185,7 +185,6 @@ which consist only of bytes from accept.
 	The strcspn() function returns the number of bytes in the initial segment of s
 which are not in the string reject.
 
-
 	strlen - calculate the length of a string
 SYNOPSIS
 	size_t strlen(const char *s);
@@ -194,3 +193,14 @@ DESCRIPTION
 excluding the terminating null byte (0).
 RETURN VALUE
 	The strlen() function returns the number of bytes in the string pointed to by s.
+
+	strpbrk - search a string for any of a set of bytes
+SYNOPSIS
+	char *strpbrk(const char *s, const char *accept);
+DESCRIPTION
+	The strpbrk() function locates the first occurrence in the string s of any of
+the bytes in the string accept.
+RETURN VALUE
+	The strpbrk() function returns a pointer to the byte in s that matches one of
+the bytes in accept, or NULL if no such byte is found.
+

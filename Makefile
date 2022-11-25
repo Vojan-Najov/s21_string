@@ -18,7 +18,8 @@ SRC = src/s21_memchr.c \
       src/s21_strncpy.c \
       src/s21_strspn.c \
       src/s21_strcspn.c \
-      src/s21_strlen.c 
+      src/s21_strlen.c \
+      src/s21_strpbrk.c 
 
 OBJ = $(SRC:.c=.o)
 
@@ -41,7 +42,8 @@ TEST_SRC = tests/test.c \
            tests/test_s21_strncpy.c \
            tests/test_s21_strspn.c \
            tests/test_s21_strcspn.c \
-           tests/test_s21_strlen.c
+           tests/test_s21_strlen.c \
+           tests/test_s21_strpbrk.c
 
 TEST_OBJ = $(TEST_SRC:.c=.o)
 

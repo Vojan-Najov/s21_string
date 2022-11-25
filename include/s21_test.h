@@ -39,4 +39,6 @@ Suite *suite_s21_strcspn(void);
 
 Suite *suite_s21_strlen(void);
 
+Suite *suite_s21_strpbrk(void);
+
 #endif

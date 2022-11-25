@@ -49,7 +49,7 @@ size_t s21_strcspn(const char *s, const char *reject);
 
 size_t s21_strlen(const char *str);
 
-char	*s21_strpbrk(const char *s, const char *accept);
+char *s21_strpbrk(const char *s, const char *accept);
 
 
 char	*s21_strstr(const char *haystack, const char *needle);
