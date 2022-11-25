@@ -25,8 +25,13 @@ int	main(void)
 		suite_s21_rawmemchr(),
 		suite_s21_memcmp(),
 		suite_s21_memcpy(),
-		suite_s21_memmove(), suite_s21_memset(), suite_s21_strcat(),
-		suite_s21_strncat(), suite_s21_strcmp(), NULL
+		suite_s21_memmove(),
+        suite_s21_memset(),
+		suite_s21_strcat(),
+		suite_s21_strncat(),
+		suite_s21_strcmp(),
+		suite_s21_strncmp(),
+		NULL
 	};
 
 	for (size_t i = 0; suite_array[i]; ++i)

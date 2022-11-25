@@ -50,14 +50,12 @@ START_TEST (set_1)
 }
 END_TEST
 
-
-#include <stdio.h>
 START_TEST (set_2)
 {
 	long	s[1024];
 	long	s21[1024];
 	int		c = 0x18f;
-	size_t	n = 1024;
+	size_t	n = 1024 * sizeof(long);
 
 	ck_assert_ptr_eq(s21_memset(s21, c, n), s21);
 	memset(s, c, n);
@@ -65,7 +63,7 @@ START_TEST (set_2)
 	c &= 0xff;
 	unsigned char *ptr21 = (unsigned char *) s21;
 	unsigned char *ptr = (unsigned char *) s;
-	for (int i = 0; i < 1024; ++i)
+	for (size_t i = 0; i < n; ++i)
 	{
 		ck_assert(ptr21[i] == c && ptr[i] == c);
 	}
@@ -73,14 +71,18 @@ START_TEST (set_2)
 
 Suite	*suite_s21_memset(void)
 {
-	Suite	*s = suite_create("suite_s21_memset");
-	TCase	*tc = tcase_create("tcase_s21_memset");
+	Suite	*s = NULL;
+	TCase	*tc = NULL;
 
-	tcase_add_test(tc, zero_size_1);
-	tcase_add_test(tc, zero_size_2);
-	tcase_add_test(tc, set_1);
-	tcase_add_test(tc, set_2);
-	suite_add_tcase(s, tc);
+	s = suite_create("suite_s21_memset");
+	tc = tcase_create("tcase_s21_memset");
+	if (s != NULL && tc != NULL) {
+		tcase_add_test(tc, zero_size_1);
+		tcase_add_test(tc, zero_size_2);
+		tcase_add_test(tc, set_1);
+		tcase_add_test(tc, set_2);
+		suite_add_tcase(s, tc);
+	}
 
-	return s;
+	return (s);
 }
