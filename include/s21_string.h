@@ -53,6 +53,8 @@ char *s21_strpbrk(const char *s, const char *accept);
 
 char *s21_strstr(const char *haystack, const char *needle);
 
+char *s21_strcasestr(const char *haystack, const char *needle); /* gnu_source */
+
 char	*s21_strtok(char *src, const char *delim);
 
 #endif
