@@ -51,8 +51,7 @@ size_t s21_strlen(const char *str);
 
 char *s21_strpbrk(const char *s, const char *accept);
 
-
-char	*s21_strstr(const char *haystack, const char *needle);
+char *s21_strstr(const char *haystack, const char *needle);
 
 char	*s21_strtok(char *src, const char *delim);
 

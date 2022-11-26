@@ -1,5 +1,7 @@
 NAME = s21_string.a
 
+INCLUDES = include/s21_string.h
+
 SRC = src/s21_memchr.c \
       src/s21_memrchr.c \
       src/s21_rawmemchr.c \
@@ -19,7 +21,8 @@ SRC = src/s21_memchr.c \
       src/s21_strspn.c \
       src/s21_strcspn.c \
       src/s21_strlen.c \
-      src/s21_strpbrk.c 
+      src/s21_strpbrk.c \
+      src/s21_strstr.c 
 
 OBJ = $(SRC:.c=.o)
 
@@ -43,20 +46,23 @@ TEST_SRC = tests/test.c \
            tests/test_s21_strspn.c \
            tests/test_s21_strcspn.c \
            tests/test_s21_strlen.c \
-           tests/test_s21_strpbrk.c
+           tests/test_s21_strpbrk.c \
+           tests/test_s21_strstr.c
 
 TEST_OBJ = $(TEST_SRC:.c=.o)
 
-CCFLAGS = -Wall -Wextra -Werror -I include
+CC = gcc
+
+CFLAGS = -Wall -Wextra -Werror -I include
 
 $(NAME): $(OBJ)
 	ar rcs $(NAME) $?
 
 test: $(NAME) $(TEST_OBJ)
-	gcc $(TEST_OBJ) -o $@ -L. $(NAME) -lcheck
+	$(CC) $(TEST_OBJ) -o $@ -L. $(NAME) -lcheck
 
-.c.o:
-	gcc $(CCFLAGS) -c $< -o $@
+%.o: %.c $(INCLUDES)
+	$(CC) $(CFLAGS) -c $< -o $@
 
 all: $(NAME)
 
@@ -64,7 +70,7 @@ clean:
 	rm -f $(OBJ) $(TEST_OBJ)
 
 fclean: clean
-	rm -f $(NAME)
+	rm -f $(NAME) test
 
 re: fclean all
 
