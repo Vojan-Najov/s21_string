@@ -59,7 +59,7 @@ TEST_OBJ = $(TEST_SRC:.c=.o)
 
 CC = gcc
 
-CFLAGS = -Wall -Wextra -Werror -I include
+CFLAGS = -Wall -Wextra -Werror -std=c11 -Wpedantic -I include
 
 $(NAME): $(OBJ)
 	ar rcs $(NAME) $?

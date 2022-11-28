@@ -1,3 +1,5 @@
+#include "s21_string.h"
+
 #ifdef __linux__
 	static char *err_array[] = {
 		"Success",

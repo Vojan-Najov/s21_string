@@ -265,3 +265,15 @@ strtok_r() that specify different saveptr arguments.
 RETURN VALUE
 	The strtok() and strtok_r() functions return a pointer to the next token,
 or NULL if there are no more tokens.
+
+	strerror - return string describing error number
+SYNOPSIS
+	char *strerror(int errnum);
+DESCRIPTION
+	The strerror() function returns a pointer to a string that describes the error
+code passed in the argument errnum, possibly using the LC_MESSAGES part of the
+current locale to select the appropriate language. (For example, if errnum is EINVAL,
+the returned description will be "Invalid argument".) This string must not be
+modified by the application, but may be modified by a subsequent call to
+strerror() or strerror_l().  No other library function, including perror(3), will
+modify this string.

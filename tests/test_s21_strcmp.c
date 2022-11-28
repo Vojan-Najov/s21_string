@@ -37,8 +37,8 @@ START_TEST(ret_unsigned)
 	char s1[] = "\0\0";
 	char s2[] = "\0\0";
 
-	s1[0] = 0xff;
-	s2[0] = 0x02;
+	s1[0] = -127;
+	s2[0] = 80;
 	ck_assert_int_eq(s21_strcmp(s1, s2), strcmp(s1, s2));
 }
 END_TEST
@@ -48,8 +48,8 @@ START_TEST(cmp_unsigned)
 	char s1[] = "\0\0";
 	char s2[] = "\0\0";
 
-	s1[0] = 0xff; s1[1] = 0xf1;
-	s2[0] = 0xff; s2[1] = 0x11;
+	s1[0] = -127; s1[1] = -126;
+	s2[0] = -127; s2[1] = -126;
 	ck_assert_int_eq(
 		s21_strcmp(s1, s2), strcmp(s1, s2));
 	ck_assert_int_eq(

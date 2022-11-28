@@ -84,7 +84,7 @@ START_TEST (found_3)
 }
 END_TEST
 
-START_TEST (found_unsigned_char_1)
+START_TEST (found_unsigned_char)
 {
 	char	buf[] = "abvdebfg";
 	size_t	n = sizeof(buf) / sizeof(char);
@@ -93,20 +93,6 @@ START_TEST (found_unsigned_char_1)
 	ck_assert_ptr_eq(s21_memrchr(buf, c, n), memrchr(buf, c, n));
 }
 END_TEST
-
-START_TEST (found_unsigned_char_2)
-{
-	char	buf[3];
-	size_t	n = sizeof(buf) / sizeof(char);
-	int		c = 0x1ff;
-
-	buf[0] = 0x1;
-	buf[1] = 0xff;
-	buf[2] = 0x2;
-	ck_assert_ptr_eq(s21_memrchr(buf, c, n), memrchr(buf, c, n));
-}
-END_TEST
-
 
 Suite *suite_s21_memrchr(void)
 {
@@ -124,8 +110,7 @@ Suite *suite_s21_memrchr(void)
 		tcase_add_test(tc, found_1);
 		tcase_add_test(tc, found_2);
 		tcase_add_test(tc, found_3);
-		tcase_add_test(tc, found_unsigned_char_1);
-		tcase_add_test(tc, found_unsigned_char_2);
+		tcase_add_test(tc, found_unsigned_char);
 		suite_add_tcase(s, tc);
 	}
 
