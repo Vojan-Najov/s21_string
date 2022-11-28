@@ -43,6 +43,7 @@ int	main(void)
 		suite_s21_strstr(),
 		suite_s21_strcasestr(),
 		suite_s21_strtok(),
+		suite_s21_strerror(),
 		NULL
 	};
 

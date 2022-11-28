@@ -57,4 +57,6 @@ char *s21_strcasestr(const char *haystack, const char *needle); /* gnu_source */
 
 char *s21_strtok(char *src, const char *delim);
 
+char *s21_strerror(int errnum);
+
 #endif

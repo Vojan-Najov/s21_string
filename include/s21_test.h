@@ -24,5 +24,6 @@ Suite *suite_s21_strpbrk(void);
 Suite *suite_s21_strstr(void);
 Suite *suite_s21_strcasestr(void);
 Suite *suite_s21_strtok(void);
+Suite *suite_s21_strerror(void);
 
 #endif
