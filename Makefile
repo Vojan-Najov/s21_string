@@ -25,7 +25,10 @@ SRC = src/s21_memchr.c \
       src/s21_strstr.c \
       src/s21_strcasestr.c \
       src/s21_strtok.c \
-      src/s21_strerror.c
+      src/s21_strerror.c \
+      src/s21_sprintf.c \
+      src/s21_atoi.c \
+      src/s21_isinteger.c 
 
 OBJ = $(SRC:.c=.o)
 
@@ -53,7 +56,10 @@ TEST_SRC = tests/test.c \
            tests/test_s21_strstr.c \
            tests/test_s21_strcasestr.c \
            tests/test_s21_strtok.c \
-           tests/test_s21_strerror.c
+           tests/test_s21_strerror.c \
+           tests/test_s21_sprintf.c \
+           tests/test_s21_atoi.c \
+           tests/test_s21_isinteger.c 
 
 TEST_OBJ = $(TEST_SRC:.c=.o)
 

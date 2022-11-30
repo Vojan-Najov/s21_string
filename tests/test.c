@@ -44,13 +44,23 @@ int	main(void)
 		suite_s21_strcasestr(),
 		suite_s21_strtok(),
 		suite_s21_strerror(),
+		suite_s21_sprintf(),
 		NULL
 	};
 
-	for (size_t i = 0; suite_array[i]; ++i)
-	{
+	Suite *suite_additions[] = {
+		suite_s21_atoi(),
+		suite_s21_isinteger(),
+		NULL
+	};
+
+	for (size_t i = 0; suite_array[i]; ++i) {
 		number_failed += run_test_suite(suite_array[i]);
 	}
 
-	return number_failed ? EXIT_FAILURE : EXIT_SUCCESS;
+	for (size_t i = 0; suite_additions[i]; ++i) {
+		number_failed += run_test_suite(suite_additions[i]);
+	}
+
+	return (number_failed ? EXIT_FAILURE : EXIT_SUCCESS);
 }

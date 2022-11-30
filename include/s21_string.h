@@ -59,4 +59,14 @@ char *s21_strtok(char *src, const char *delim);
 
 char *s21_strerror(int errnum);
 
+int s21_sprintf(char *str, const char *format, ...);
+
+/* additions */
+
+int s21_atoi(const char *str);
+
+void s21_itoa(int num, char *buf);
+
+int s21_isinteger(const char *str);
+
 #endif

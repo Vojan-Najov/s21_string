@@ -25,5 +25,12 @@ Suite *suite_s21_strstr(void);
 Suite *suite_s21_strcasestr(void);
 Suite *suite_s21_strtok(void);
 Suite *suite_s21_strerror(void);
+Suite *suite_s21_sprintf(void);
+
+/* additions */
+Suite *suite_s21_atoi(void);
+Suite *suite_s21_isinteger(void);
+
+
 
 #endif
