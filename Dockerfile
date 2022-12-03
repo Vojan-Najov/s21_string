@@ -26,4 +26,4 @@ COPY . /project
 
 WORKDIR "/project"
 
-#ENTRYPOINT ["/bin/bash", "start_test.sh"]
+ENTRYPOINT ["/bin/bash", "start_test.sh"]

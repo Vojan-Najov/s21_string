@@ -6,11 +6,13 @@
 #define S21_STRING_H
 
 typedef long unsigned int size_t;
+typedef int wchar_t;
 
 #ifndef NULL
 #define NULL ((void*)0)
 #endif
 
+/* string.h */
 void *s21_memchr(const void *s, int c, size_t n);
 
 void *s21_memrchr(const void *s, int c, size_t n); /* gnu_source */
@@ -59,9 +61,15 @@ char *s21_strtok(char *src, const char *delim);
 
 char *s21_strerror(int errnum);
 
+/* sprintf */
 int s21_sprintf(char *str, const char *format, ...);
 
+/* scanf */
+
+/* special string processing functions */ 
+
 /* additions */
+int s21_wctomb(char *str, wchar_t wc);
 
 int s21_atoi(const char *str);
 

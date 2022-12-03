@@ -28,14 +28,14 @@ SRC = src/s21_memchr.c \
       src/s21_strerror.c \
       src/s21_sprintf.c \
       src/s21_atoi.c \
-      src/s21_isinteger.c 
+      src/s21_isinteger.c \
+      src/s21_wctomb.c 
 
 OBJ = $(SRC:.c=.o)
 
 TEST_SRC = tests/test.c \
            tests/test_s21_memchr.c \
            tests/test_s21_memrchr.c \
-           tests/test_s21_rawmemchr.c \
            tests/test_s21_memcmp.c \
            tests/test_s21_memcpy.c \
            tests/test_s21_memmove.c \

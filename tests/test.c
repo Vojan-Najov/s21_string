@@ -22,7 +22,7 @@ int	main(void)
 	Suite	*suite_array[] = {
 		suite_s21_memchr(),
 		suite_s21_memrchr(),
-		suite_s21_rawmemchr(),
+//		suite_s21_rawmemchr(),
 		suite_s21_memcmp(),
 		suite_s21_memcpy(),
 		suite_s21_memmove(),
