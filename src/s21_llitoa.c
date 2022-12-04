@@ -1,11 +1,11 @@
 #include "s21_string.h"
 
-size_t s21_itoa(int num, char *buf)
+size_t s21_lltoa(long long int num, char *buf)
 {
-	int n = num;
-	size_t len = 0;
-	size_t offset = 0;
+	size_t len;
+	size_t offset;
 	int rem;
+	long long int n = num;
 
 	while (n) {
 		++len;

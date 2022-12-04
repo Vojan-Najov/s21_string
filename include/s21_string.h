@@ -73,7 +73,9 @@ int s21_wctomb(char *str, wchar_t wc);
 
 int s21_atoi(const char *str);
 
-void s21_itoa(int num, char *buf);
+size_t s21_itoa(int num, char *buf);
+
+size_t s21_llitoa(long long int num, char *buf);
 
 int s21_isinteger(const char *str);
 

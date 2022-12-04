@@ -23,7 +23,7 @@ push_char(char *buf, va_list ap, int flags, int width);
 static int
 push_wchar(char *buf, va_list ap, int flags, int width);
 static int
-push_decimal(va_list ap, int flags, int width, int precision);
+push_decimal(char *buf, va_list ap, int flags, int width, int precision);
 
 int s21_sprintf(char *str, const char *format, ...)
 {
@@ -58,7 +58,7 @@ int s21_sprintf(char *str, const char *format, ...)
 						break;
 					case 'i':
 					case 'd':
-						push_decimal(ap, flags, width, precision);
+						push_decimal(str, ap, flags, width, precision);
 						break;
 				}				
 				str += offset;
@@ -268,11 +268,27 @@ static int push_wchar(char *buf, va_list ap, int flags, int width)
 }
 
 
-static int push_decimal(va_list ap, int flags, int width, int precision)
+static int push_decimal(char *buf, va_list ap, int flags, int width, int precision)
 {
-	(void) ap;
-	(void) flags;
-	(void) width;
-	(void) precision;
+	long long int n;
+	char *ptr = buf;
+	char space = ' ';
+	char nbuf[64];
+	size_t nlen;
+	
+	if (flags & HH_FLAG) {
+		n = (char) va_arg(ap, int);
+	} else if (flags & H_FLAG) {
+		n = (short int) va_arg(ap, int);
+	} else if (flags & L_FLAG) {
+		n = (long int) va_arg(ap, long int);
+	} else if (flags & LL_FLAG) {
+		n = (long long int) va_arg(ap, long long int);
+	} else {
+		n = (int) va_arg(ap, int);
+	}
+
+	nlen = s21_lltoa(n, nbuf);
+	
 	return 0;
 }
