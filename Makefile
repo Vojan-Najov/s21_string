@@ -2,6 +2,8 @@ NAME = s21_string.a
 
 INCLUDES = include/s21_string.h
 
+#br
+
 SRC = src/s21_memchr.c \
       src/s21_memrchr.c \
       src/s21_rawmemchr.c \
