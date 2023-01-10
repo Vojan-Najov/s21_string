@@ -1,90 +1,94 @@
 NAME = s21_string.a
+TEST = test
+REPORT = gcov_report
+MEMORY_TEST = memory_test
 
-INCLUDES = include/s21_string.h
+INCLD_DIR = ./include
+TEST_INCLD_DIR = ./tests
 
-#br
+SRC_DIR = ./src
+TEST_SRC_DIR = ./tests
 
-SRC = src/s21_memchr.c \
-      src/s21_memrchr.c \
-      src/s21_rawmemchr.c \
-      src/s21_memcmp.c \
-      src/s21_memcpy.c \
-      src/s21_memmove.c \
-      src/s21_memset.c \
-      src/s21_strcat.c \
-      src/s21_strncat.c \
-      src/s21_strchr.c \
-      src/s21_strrchr.c \
-      src/s21_strchrnul.c \
-      src/s21_strcmp.c \
-      src/s21_strncmp.c \
-      src/s21_strcpy.c \
-      src/s21_strncpy.c \
-      src/s21_strspn.c \
-      src/s21_strcspn.c \
-      src/s21_strlen.c \
-      src/s21_strpbrk.c \
-      src/s21_strstr.c \
-      src/s21_strcasestr.c \
-      src/s21_strtok.c \
-      src/s21_strerror.c \
-      src/s21_sprintf.c \
-      src/s21_atoi.c \
-      src/s21_isinteger.c \
-      src/s21_wctomb.c 
+OBJ_DIR = $(SRC_DIR)/objs
+TEST_OBJ_DIR = $(TEST_SRC_DIR)/test_objs
 
-OBJ = $(SRC:.c=.o)
+GCOV_DIR = ./gcov_report
+GCOV_OBJ_DIR = $(GCOV_DIR)/objs
 
-TEST_SRC = tests/test.c \
-           tests/test_s21_memchr.c \
-           tests/test_s21_memrchr.c \
-           tests/test_s21_memcmp.c \
-           tests/test_s21_memcpy.c \
-           tests/test_s21_memmove.c \
-           tests/test_s21_memset.c \
-           tests/test_s21_strcat.c \
-           tests/test_s21_strncat.c \
-           tests/test_s21_strchr.c \
-           tests/test_s21_strrchr.c \
-           tests/test_s21_strchrnul.c \
-           tests/test_s21_strcmp.c \
-           tests/test_s21_strncmp.c \
-           tests/test_s21_strcpy.c \
-           tests/test_s21_strncpy.c \
-           tests/test_s21_strspn.c \
-           tests/test_s21_strcspn.c \
-           tests/test_s21_strlen.c \
-           tests/test_s21_strpbrk.c \
-           tests/test_s21_strstr.c \
-           tests/test_s21_strcasestr.c \
-           tests/test_s21_strtok.c \
-           tests/test_s21_strerror.c \
-           tests/test_s21_sprintf.c \
-           tests/test_s21_atoi.c \
-           tests/test_s21_isinteger.c 
+SRC = $(wildcard $(SRC_DIR)/s21_*.c)
+OBJ = $(addprefix $(OBJ_DIR)/, $(notdir $(SRC:.c=.o)))
 
-TEST_OBJ = $(TEST_SRC:.c=.o)
+TEST_SRC = $(wildcard $(TEST_SRC_DIR)/test*.c)
+TEST_OBJ = $(addprefix $(TEST_OBJ_DIR)/, $(notdir $(TEST_SRC:.c=.o)))
+
+GCOV_OBJ = $(addprefix $(GCOV_OBJ_DIR)/, $(notdir $(SRC:.c=.o)))
+
+INCLD = $(wildcard $(INCLD_DIR)/*.h)
+TEST_INCLD = $(wildcard $(TEST_INCLD_DIR)/*.h)
+
+TEST_LIBS = -lcheck -lm
 
 CC = gcc
+MKDIR = mkdir -p 
+RM = rm -f
+RMDIR = rm -rf
+AR = ar rcs
 
-CFLAGS = -Wall -Wextra -Werror -std=c11 -Wpedantic -I include
+CFLAGS = -Wall -Wextra -Werror -std=c11 -Wpedantic
+GCOV_FLAGS = -fprofile-arcs -ftest-coverage -g -O0
 
 $(NAME): $(OBJ)
-	ar rcs $(NAME) $?
+	$(AR) $(NAME) $?
 
-test: $(NAME) $(TEST_OBJ)
-	$(CC) $(TEST_OBJ) -o $@ -L. $(NAME) -lcheck
+all: $(NAME) $(TEST)
 
-%.o: %.c $(INCLUDES)
-	$(CC) $(CFLAGS) -c $< -o $@
+$(TEST): $(NAME) $(TEST_OBJ)
+	$(CC) $(TEST_OBJ) $(TEST_LIBS) -L. $(NAME) -o $@
 
-all: $(NAME)
+$(REPORT): $(GCOV_OBJ) $(TEST_OBJ)
+	$(CC) $(GCOV_FLAGS) $(GCOV_OBJ) $(TEST_OBJ)  \
+		-o $(GCOV_DIR)/test_coverage $(TEST_LIBS)
+	./$(GCOV_DIR)/test_coverage;
+	@$(RM) $(GCOV_OBJ_DIR)/s21_wctomb* $(GCOV_OBJ_DIR)/s21_ullitoa* \
+		$(GCOV_OBJ_DIR)/s21_llitoa* $(GCOV_OBJ_DIR)/s21_ldtoa* \
+		$(GCOV_OBJ_DIR)/s21_itoa* $(GCOV_OBJ_DIR)/s21_isinteger* \
+		$(GCOV_OBJ_DIR)/s21_atoi* $(GCOV_OBJ_DIR)/s21_strtol*;
+	gcov $(GCOV_OBJ_DIR)/*.gcno; 
+	@mv *.gcov $(GCOV_OBJ_DIR);
+	lcov -c -t "s21_string" -o $(GCOV_DIR)/report.info -d $(GCOV_OBJ_DIR) \
+		--rc lcov_branch_coverage=1;
+	genhtml -o $(GCOV_DIR) $(GCOV_DIR)/report.info --rc lcov_branch_coverage=1
+
+$(MEMORY_TEST): $(clean) $(NAME) $(TEST_SRC_DIR)/memory_test.c
+	$(CC) $(CFLAGS) -g -I$(INCLD_DIR) $(TEST_SRC_DIR)/memory_test.c s21_string.a -o $@
+	valgrind --trace-children=yes --track-origins=yes --leak-check=full \
+			--show-leak-kinds=all -s ./$(MEMORY_TEST)
+
+
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(INCLD)
+	@$(MKDIR) $(@D)
+	$(CC) $(CFLAGS) -I$(INCLD_DIR) -c $< -o $@
+
+$(TEST_OBJ_DIR)/%.o: $(TEST_SRC_DIR)/%.c  $(TEST_INCLD)
+	@$(MKDIR) $(@D)
+	$(CC) $(CFLAGS) -I$(INCLD_DIR) -I$(TEST_INCLD_DIR) -c $< -o $@
+
+$(GCOV_OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(INCLD)
+	@$(MKDIR) $(@D)
+	$(CC) $(CFLAGS) $(GCOV_FLAGS) -I$(INCLD_DIR) -c $< -o $@
 
 clean:
-	rm -f $(OBJ) $(TEST_OBJ)
+	$(RM) $(OBJ)
+	$(RMDIR) $(OBJ_DIR)
+	$(RM) $(TEST_OBJ)
+	$(RMDIR) $(TEST_OBJ_DIR)
+	$(RM) -r $(GCOV_OBJ_DIR)
 
 fclean: clean
-	rm -f $(NAME) test
+	$(RM) $(NAME)
+	$(RM) $(TEST)
+	$(RM) -r $(GCOV_DIR)
+	$(RM) $(MEMORY_TEST)
 
 re: fclean all
 
